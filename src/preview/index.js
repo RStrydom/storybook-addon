@@ -6,6 +6,7 @@ import { handleOnSwitch, onThemeSwitchDefault } from './onThemeSwitch';
 import { defaultSnippet } from '../utils/default';
 
 const DecoratorUI = ThemeProvider => ({
+  context,
   getStory,
   theme,
   themeInd,
@@ -14,7 +15,7 @@ const DecoratorUI = ThemeProvider => ({
   React.useEffect(() => {
     handleOnSwitch({ theme, onThemeSwitch });
   }, [themeInd]);
-  return <ThemeProvider theme={theme}>{getStory()}</ThemeProvider>;
+  return <ThemeProvider theme={theme}>{getStory(context)}</ThemeProvider>;
 };
 
 const withData = (ThemeProvider, { providerFn, onThemeSwitch }) => {
